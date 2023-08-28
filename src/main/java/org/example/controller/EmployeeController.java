@@ -16,7 +16,8 @@ public class EmployeeController {
 
     }
 
-    public List<Employee> getAllEmployees() {
+    public List<Employee> getAllEmployees() throws SQLException {
+
         return employeeDao.getAllEmployees();
     }
 
@@ -28,7 +29,7 @@ public class EmployeeController {
         employeeDao.addEmployee(employee);
     }
 
-    public void updateSalarie(Employee employee) throws SQLException {
+    public void updateEmployee(Employee employee) throws SQLException {
         employeeDao.updateEmployee(employee);
     }
 

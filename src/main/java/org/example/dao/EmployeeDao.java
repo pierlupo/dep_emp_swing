@@ -1,5 +1,6 @@
 package org.example.dao;
 
+import org.example.model.Department;
 import org.example.model.Employee;
 import org.example.utils.ConnectionUtil;
 
@@ -52,14 +53,41 @@ public class EmployeeDao {
 
     }
 
-    public List<Employee> getAllEmployees(Employee employee) throws  SQLException {
-        List<Employee> employeeList = new ArrayList<>();
+    public List<Employee> getAllEmployees() throws  SQLException {
+        List<Employee> empList = new ArrayList<>();
         con = ConnectionUtil.getConnection();
         ps = con.prepareStatement("SELECT * FROM employee ");
         ps.executeQuery();
         con.close();
-        return employeeList;
+        return empList;
 
+    }
+    public Employee getEmployeeById(int id) {
+
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        Employee employee = null;
+
+        try {
+
+            String query = "SELECT * FROM employee WHERE id = ?";
+            statement = con.prepareStatement(query);
+            statement.setInt(1, id);
+            resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                employee = new Employee();
+                employee.setId(resultSet.getInt("id"));
+                employee.setFirstName(resultSet.getString("first_name"));
+                employee.setLastName(resultSet.getString("last_name"));
+                employee.setRole(resultSet.getString("role"));
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return employee;
     }
 
     public Employee searchEmp(int id) {

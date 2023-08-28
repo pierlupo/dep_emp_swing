@@ -50,7 +50,7 @@ public class MainFrame extends JDialog{
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     try {
-                        AddDialog dialog = new AddDialog();
+                        EmployeeUI dialog = new EmployeeUI();
                         dialog.setModalityType(ModalityType.APPLICATION_MODAL);
                         dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
                         dialog.setVisible(true);
@@ -69,7 +69,7 @@ public class MainFrame extends JDialog{
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     try {
-                        EditDialog dialog = new EditDialog();
+                        EmployeeUI dialog = new EmployeeUI();
                         dialog.setModalityType(ModalityType.APPLICATION_MODAL);
                         dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
                         dialog.setVisible(true);
@@ -103,7 +103,7 @@ public class MainFrame extends JDialog{
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     try {
-                        DepDialog dialog = new DepDialog();
+                        DepartmentUI dialog = new DepartmentUI();
                         dialog.setModalityType(ModalityType.APPLICATION_MODAL);
                         dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
                         dialog.setVisible(true);

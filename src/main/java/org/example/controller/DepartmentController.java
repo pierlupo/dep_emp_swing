@@ -11,7 +11,9 @@ public class DepartmentController {
     private DepartmentDao departmentDao;
 
     public DepartmentController() {
+
         this.departmentDao = new DepartmentDao();
+
     }
 
     public List<Department> getAllDepartments() throws SQLException {

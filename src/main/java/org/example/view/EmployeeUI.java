@@ -1,4 +1,6 @@
 package org.example.view;
 
-public class EmployeeUI {
+import javax.swing.*;
+
+public class EmployeeUI extends JDialog {
 }

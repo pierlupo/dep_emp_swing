@@ -80,7 +80,6 @@ public class DepartmentDao {
                 department = new Department();
                 department.setId(resultSet.getInt("id"));
                 department.setName(resultSet.getString("name"));
-                // Autres attributs à initialiser si nécessaire
             }
         } catch (SQLException e) {
             e.printStackTrace();

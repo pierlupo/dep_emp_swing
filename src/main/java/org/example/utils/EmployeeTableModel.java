@@ -28,7 +28,7 @@ public class EmployeeTableModel {
 
         model = new DefaultTableModel(null, columnNames);
 
-        List<Employee> data = employeeDao.getAllEmployees(employee);
+        List<Employee> data = employeeDao.getAllEmployees();
 
         data.forEach(e ->{
             model.addRow(new Object[]{e.getId(),e.getFirstName(),e.getLastName(),e.getRole()});
