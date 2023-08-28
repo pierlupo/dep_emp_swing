@@ -33,7 +33,7 @@ public class DepartmentController {
         departmentDao.updateDepartment(departement);
     }
 
-    public void deleteDepartment(Department department) {
+    public void deleteDepartment(Department department) throws SQLException {
         departmentDao.deleteDepartment(department.getId());
     }
 }

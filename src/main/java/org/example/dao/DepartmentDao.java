@@ -62,28 +62,7 @@ public class DepartmentDao {
 
     }
 
-    public Department searchDep(int id) {
 
-        con = ConnectionUtil.getConnection();
-        try {
-            ps = con.prepareStatement("SELECT * FROM `department` WHERE id=?");
-            ps.setInt(1, id);
-            ResultSet result = ps.executeQuery();
-            Department department = null;
-            if (result.first()) {
-                department = new Department();
-                department.setId(result.getInt("id"));
-                department.setName(result.getString("name"));
-                System.out.println(department);
-            }
-            con.close();
-            return department;
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-            return null;
-        }
-    }
     public Department getDepartmentById(int id) {
 
         PreparedStatement statement = null;
@@ -118,7 +97,7 @@ public class DepartmentDao {
 
         try {
 
-            String query = "SELECT * FROM department WHERE nom = ?";
+            String query = "SELECT * FROM department WHERE name = ?";
             preparedStatement = con.prepareStatement(query);
             preparedStatement.setString(1, name);
             resultSet = preparedStatement.executeQuery();
@@ -136,6 +115,29 @@ public class DepartmentDao {
         }
 
         return department;
+    }
+
+    public Department searchDep(int id) {
+
+        con = ConnectionUtil.getConnection();
+        try {
+            ps = con.prepareStatement("SELECT * FROM `department` WHERE id=?");
+            ps.setInt(1, id);
+            ResultSet result = ps.executeQuery();
+            Department department = null;
+            if (result.first()) {
+                department = new Department();
+                department.setId(result.getInt("id"));
+                department.setName(result.getString("name"));
+                System.out.println(department);
+            }
+            con.close();
+            return department;
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public void loadDataDep(DefaultTableModel tableModel) {

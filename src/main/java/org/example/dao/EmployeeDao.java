@@ -28,11 +28,11 @@ public class EmployeeDao {
 
     }
 
-    public void deleteEmployee(Employee employee) throws SQLException {
+    public void deleteEmployee(int id) throws SQLException {
 
         con = ConnectionUtil.getConnection();
         ps = con.prepareStatement("DELETE FROM `employee` WHERE id = ?");
-        ps.setInt(1, employee.getId());
+        ps.setInt(1, id);
         ps.executeUpdate();
         con.close();
     }
