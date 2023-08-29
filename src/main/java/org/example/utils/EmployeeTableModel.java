@@ -5,42 +5,54 @@ import org.example.dao.EmployeeDao;
 import org.example.model.Employee;
 
 import javax.swing.*;
+import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableModel;
 import java.sql.SQLException;
 import java.util.List;
 
-public class EmployeeTableModel {
+public class EmployeeTableModel extends AbstractTableModel {
+    private List<Employee> employeeList;
+    private String[] columnNames = {"ID", "Lastname","Firstname","Role"};
 
-    private DefaultTableModel model;
-    private JPanel contentPanel;
-    private JTable jTable;
-    private JFrame jFrame;
-    private String[] columnNames = {"Id","Firstname","Lastname","Role"};
+    public EmployeeTableModel(List<Employee> employeeList) {
 
-    EmployeeTableModel() throws SQLException {
+        this.employeeList = employeeList;
+    }
 
-        contentPanel = new JPanel();
-        Employee employee = new Employee();
-        EmployeeDao employeeDao = new EmployeeDao();
+    @Override
+    public int getRowCount() {
+        return employeeList.size();
+    }
 
-        jFrame = new JFrame();
-        jFrame.setTitle("Employee Management System");
+    @Override
+    public int getColumnCount() {
+        return columnNames.length;
+    }
 
-        model = new DefaultTableModel(null, columnNames);
+    @Override
+    public String getColumnName(int columnIndex) {
+        return columnNames[columnIndex];
+    }
 
-        List<Employee> data = employeeDao.getAllEmployees();
+    @Override
+    public Class<?> getColumnClass(int columnIndex) {
+        return getValueAt(0, columnIndex).getClass();
+    }
 
-        data.forEach(e ->{
-            model.addRow(new Object[]{e.getId(),e.getFirstName(),e.getLastName(),e.getRole()});
-        });
-
-        employeeDao.loadDataEmp(model);
-
-        jTable = new JTable(model);
-        jTable.setBounds(30, 40, 800, 500);
-        JScrollPane sp = new JScrollPane(jTable);
-        jFrame.add(sp);
-        jFrame.setSize(800, 750);
-        jFrame.setVisible(true);
+    @Override
+    public Object getValueAt(int rowIndex, int columnIndex) {
+        Employee employee = employeeList.get(rowIndex);
+        switch (columnIndex) {
+            case 0:
+                return employee.getId();
+            case 1:
+                return employee.getLastName();
+            case 2:
+                return employee.getFirstName();
+            case 3:
+                return employee.getRole();
+            default:
+                return null;
+        }
     }
 }

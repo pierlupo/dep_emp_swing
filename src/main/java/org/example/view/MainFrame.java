@@ -8,14 +8,14 @@ import java.awt.event.ActionListener;
 
 public class MainFrame extends JDialog{
 
-    private JPanel contentPanel;
+//    private JPanel contentPanel;
+//
+//    private JButton addButton, editButton, deleteButton, depButton;
 
-    private JButton addButton, editButton, deleteButton, depButton;
-
-    public void getMainFrame() {
-
-        JFrame mainFrame = new JFrame("Employee System");
-        mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//    public void getMainFrame() {
+//
+//        JFrame mainFrame = new JFrame("Employee System");
+//        mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 
 //        JPanel containerPanel = new JPanel();
@@ -28,56 +28,56 @@ public class MainFrame extends JDialog{
 //
 //        containerPanel.setLayout(cardLayout);
 
-            contentPanel = new JPanel();
-            setTitle("Main Frame");
-            setBounds(500, 500, 400, 250);
-            getContentPane().setLayout(new BorderLayout());
-            contentPanel.setBorder(new EmptyBorder(10, 10,10,10));
-            getContentPane().add(contentPanel, BorderLayout.NORTH);
-            contentPanel.setLayout(null);
+//            contentPanel = new JPanel();
+//            setTitle("Main Frame");
+//            setBounds(500, 500, 400, 250);
+//            getContentPane().setLayout(new BorderLayout());
+//            contentPanel.setBorder(new EmptyBorder(10, 10,10,10));
+//            getContentPane().add(contentPanel, BorderLayout.NORTH);
+//            contentPanel.setLayout(null);
+//
+//            JPanel jPanelButton = new JPanel();
+//            JPanel jPanelSelectButton = new JPanel();
+//            getContentPane().add(jPanelButton, BorderLayout.NORTH);
+//            getContentPane().add(jPanelSelectButton, BorderLayout.CENTER);
 
-            JPanel jPanelButton = new JPanel();
-            JPanel jPanelSelectButton = new JPanel();
-            getContentPane().add(jPanelButton, BorderLayout.NORTH);
-            getContentPane().add(jPanelSelectButton, BorderLayout.CENTER);
 
+//            addButton = new JButton("Add");
+//            jPanelButton.add(addButton);
+//
+//            addButton.addActionListener(new ActionListener() {
+//
+//                @Override
+//                public void actionPerformed(ActionEvent e) {
+//                    try {
+//                        EmployeeUI dialog = new EmployeeUI();
+//                        dialog.setModalityType(ModalityType.APPLICATION_MODAL);
+//                        dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+//                        dialog.setVisible(true);
+//                    } catch (Exception ex) {
+//                        ex.printStackTrace();
+//                    }
+//                }
+//
+//            });
 
-            addButton = new JButton("Add");
-            jPanelButton.add(addButton);
-
-            addButton.addActionListener(new ActionListener() {
-
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    try {
-                        EmployeeUI dialog = new EmployeeUI();
-                        dialog.setModalityType(ModalityType.APPLICATION_MODAL);
-                        dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-                        dialog.setVisible(true);
-                    } catch (Exception ex) {
-                        ex.printStackTrace();
-                    }
-                }
-
-            });
-
-            editButton = new JButton("Edit");
-            jPanelButton.add(editButton);
-
-            editButton.addActionListener(new ActionListener() {
-
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    try {
-                        EmployeeUI dialog = new EmployeeUI();
-                        dialog.setModalityType(ModalityType.APPLICATION_MODAL);
-                        dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-                        dialog.setVisible(true);
-                    } catch (Exception ex) {
-                        ex.printStackTrace();
-                    }
-                }
-            });
+//            editButton = new JButton("Edit");
+//            jPanelButton.add(editButton);
+//
+//            editButton.addActionListener(new ActionListener() {
+//
+//                @Override
+//                public void actionPerformed(ActionEvent e) {
+//                    try {
+//                        EmployeeUI dialog = new EmployeeUI();
+//                        dialog.setModalityType(ModalityType.APPLICATION_MODAL);
+//                        dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+//                        dialog.setVisible(true);
+//                    } catch (Exception ex) {
+//                        ex.printStackTrace();
+//                    }
+//                }
+//            });
 
 //            deleteButton = new JButton("delete");
 //            jPanelButton.add(deleteButton);
@@ -96,21 +96,22 @@ public class MainFrame extends JDialog{
 //                }
 //            });
 
-            depButton = new JButton("department");
-            jPanelSelectButton.add(depButton);
-
-            depButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    try {
-                        DepartmentUI dialog = new DepartmentUI();
-                        dialog.setModalityType(ModalityType.APPLICATION_MODAL);
-                        dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-                        dialog.setVisible(true);
-                    } catch (Exception ex) {
-                        ex.printStackTrace();
-                    }
-                }
-            });
-        }
+//            depButton = new JButton("department");
+//            jPanelSelectButton.add(depButton);
+//
+//            depButton.addActionListener(new ActionListener() {
+//                @Override
+//                public void actionPerformed(ActionEvent e) {
+//                    try {
+//                        DepartmentUI dialog = new DepartmentUI();
+//                        dialog.setModalityType(ModalityType.APPLICATION_MODAL);
+//                        dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+//                        dialog.setVisible(true);
+//                    } catch (Exception ex) {
+//                        ex.printStackTrace();
+//                    }
+//                }
+//            });
+//        }
+//    }
     }

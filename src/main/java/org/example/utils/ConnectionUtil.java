@@ -13,7 +13,7 @@ public class ConnectionUtil {
             Class.forName("com.mysql.cj.jdbc.Driver");
             String dataBase = "emp_dep";
             String URL = "jdbc:mysql://localhost:3306/";
-            java.sql.Connection con = DriverManager.getConnection(URL + dataBase , "root" , "Guerrier@777");
+            java.sql.Connection con = DriverManager.getConnection(URL + dataBase , "root" , "azerty123");
 
             return con;
 
