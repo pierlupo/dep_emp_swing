@@ -2,7 +2,9 @@ package org.example.dao;
 
 import org.example.model.Department;
 import org.example.model.Employee;
+import org.example.model.Role;
 import org.example.utils.ConnectionUtil;
+import java.sql.Connection;
 
 import javax.swing.table.DefaultTableModel;
 import java.sql.*;
@@ -13,7 +15,7 @@ import java.util.Vector;
 public class EmployeeDao {
 
     private Connection con;
-
+    private DepartmentDao departmentDao;
     private PreparedStatement ps;
 
     public int addEmployee(Employee employee) throws SQLException {
@@ -24,7 +26,7 @@ public class EmployeeDao {
         ps.setString(2, employee.getLastName());
         ps.setString(3, employee.getRole());
         int n = ps.executeUpdate();
-        con.close();
+//        con.close();
         return n;
 
     }
@@ -55,10 +57,31 @@ public class EmployeeDao {
 
     public List<Employee> getAllEmployees() throws  SQLException {
         List<Employee> empList = new ArrayList<>();
+        String query = "SELECT * FROM employee";
         con = ConnectionUtil.getConnection();
-        ps = con.prepareStatement("SELECT * FROM employee ");
-        ps.executeQuery();
-        con.close();
+        try (PreparedStatement preparedStatement = con.prepareStatement(query);
+             ResultSet resultSet = preparedStatement.executeQuery()) {
+            while (resultSet.next()) {
+                Employee employee = new Employee();
+                employee.setId(resultSet.getInt("id"));
+                employee.setLastName(resultSet.getString("last_name"));
+                employee.setFirstName(resultSet.getString("first_name"));
+                String roleOrdinal = resultSet.getString("role");
+                employee.setRole(String.valueOf(Role.valueOf(roleOrdinal)));
+                int id = resultSet.getInt("departement_id");
+                Department department;
+                if( departmentDao.getDepartmentById(id)!= null){
+                    department = departmentDao.getDepartmentById(id);
+                }else{
+                    department = null;
+                }
+                // Vous devrez charger le département associé ici
+                employee.setDepartment(department);
+                empList.add(employee);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return empList;
 
     }

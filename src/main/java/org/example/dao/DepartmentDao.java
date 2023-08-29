@@ -54,10 +54,19 @@ public class DepartmentDao {
 
     public List<Department> getAllDepartments() throws  SQLException {
         List<Department> depList = new ArrayList<>();
-        con = ConnectionUtil.getConnection();
-        ps = con.prepareStatement("SELECT * FROM department ");
-        ps.executeQuery();
-        con.close();
+        String query = "SELECT * FROM department";
+        try (PreparedStatement preparedStatement = con.prepareStatement(query);
+             ResultSet resultSet = preparedStatement.executeQuery()) {
+            while (resultSet.next()) {
+                Department department = new Department();
+                department.setId(resultSet.getInt("id"));
+                department.setName(resultSet.getString("name"));
+                depList.add(department);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
         return depList;
 
     }
@@ -103,10 +112,10 @@ public class DepartmentDao {
 
             if (resultSet.next()) {
                 int id = resultSet.getInt("id");
-                String nom = resultSet.getString("name");
+                String n = resultSet.getString("name");
 
 
-                department = new Department(id,name);
+                department = new Department(id,n);
 
             }
         } catch (SQLException e) {

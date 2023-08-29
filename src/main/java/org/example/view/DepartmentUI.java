@@ -68,9 +68,9 @@ public class DepartmentUI extends JFrame {
             }
         });
 
-        JButton salarieButton = new JButton("Employee");
+        JButton empButton = new JButton("Employee");
 
-        salarieButton.addActionListener(new ActionListener() {
+        empButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 departmentUI.setVisible(false);
@@ -83,7 +83,7 @@ public class DepartmentUI extends JFrame {
         buttonPanel.add(addButton);
         buttonPanel.add(editButton);
         buttonPanel.add(deleteButton);
-        buttonPanel.add(salarieButton);
+        buttonPanel.add(empButton);
 
         JPanel mainPanel = new JPanel(new BorderLayout());
         mainPanel.add(new JScrollPane(departmentList), BorderLayout.CENTER);
@@ -102,7 +102,7 @@ public class DepartmentUI extends JFrame {
 
 
     private void openAjoutDialog() {
-        // Créer une boîte de dialogue pour l'ajout de salarié
+        // Créer une boîte de dialogue pour l'ajout de dep
         JDialog ajoutDialog = new JDialog(this, "Add a department", true);
         JPanel mainPanel = new JPanel();
         JPanel contentPane = new JPanel();
@@ -161,7 +161,7 @@ public class DepartmentUI extends JFrame {
             modifDialog.setSize(300, 200);
             modifDialog.setLayout(new GridLayout(4, 2));
             modifDialog.setLocationRelativeTo(null);
-            JLabel nameLabel = new JLabel("Nom:");
+            JLabel nameLabel = new JLabel("Name:");
             JTextField nameField = new JTextField(selectedDepartement.getName());
 
             JButton updateButton = new JButton("Edit");
@@ -213,8 +213,8 @@ public class DepartmentUI extends JFrame {
     private void updateDepartementList() throws SQLException {
         departmentListModel.clear(); // Efface le modèle de liste actuel
 
-        // Ajoutez tous les départements actuels à partir de votre source de données
-        List<Department> allDepartments = departmentDao.getAllDepartments(); // Utilisez votre DepartementDao pour obtenir tous les départements
+
+        List<Department> allDepartments = departmentDao.getAllDepartments();
         for (Department department : allDepartments) {
             departmentListModel.addElement(department);
         }

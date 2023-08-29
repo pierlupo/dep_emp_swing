@@ -37,7 +37,7 @@ public class EmployeeUI extends JFrame{
     private void initializeUI() throws SQLException {
 
         JFrame frame = new JFrame();
-        frame = new JFrame("MPanaging employees");
+        frame = new JFrame("Managing employees");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(800, 600);
         frame.setLocationRelativeTo(null);
@@ -116,7 +116,7 @@ public class EmployeeUI extends JFrame{
         ajoutDialog.setBackground(Color.yellow);
         JPanel mainPanel = new JPanel();
         JPanel contentPane = new JPanel();
-        ajoutDialog.setSize(500,200);
+        ajoutDialog.setSize(600,200);
         mainPanel.setLayout(new GridLayout(5, 2));
 
         contentPane.setLayout(new BorderLayout());
@@ -125,7 +125,7 @@ public class EmployeeUI extends JFrame{
         mainPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // Marges internes
 
 
-        JLabel nameLabel = new JLabel("Lastame:");
+        JLabel nameLabel = new JLabel("Lastname:");
         JTextField nameField = new JTextField();
 
         JLabel nameLabel1 = new JLabel("Firstname:");
