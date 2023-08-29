@@ -134,7 +134,7 @@ public class EmployeeUI extends JFrame{
 
         JLabel roleLabel = new JLabel("Role:");
         JRadioButton jRadioButton = new JRadioButton(String.valueOf(Role.MANAGER));
-        JRadioButton jRadioButton1 = new JRadioButton(String.valueOf(Role.EMPLOYEE));
+        JRadioButton jRadioButton1 = new JRadioButton(String.valueOf(Role.WORKER));
         JRadioButton jRadioButton2 = new JRadioButton("EXECUTIVE");
 
         JPanel radioPanel = new JPanel(new GridLayout(1, 3));
@@ -248,7 +248,7 @@ public class EmployeeUI extends JFrame{
             JTextField nameField = new JTextField(selectedEmployee.getLastName());
 
             JLabel roleLabel = new JLabel("Role:");
-            JComboBox<String> roleComboBox = new JComboBox<>(new String[]{"MANAGER", "EMPLOYEE", "EXECUTIVE"});
+            JComboBox<String> roleComboBox = new JComboBox<>(new String[]{"MANAGER", "WORKER", "EXECUTIVE"});
             roleComboBox.setSelectedItem(selectedEmployee.getRole());
 
             JButton updateButton = new JButton("Edit");

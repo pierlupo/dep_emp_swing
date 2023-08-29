@@ -17,6 +17,10 @@ public class EmployeeDao {
     private Connection con;
     private DepartmentDao departmentDao;
     private PreparedStatement ps;
+    public EmployeeDao() {
+        con = ConnectionUtil.getConnection();
+        departmentDao = new DepartmentDao();
+    }
 
     public int addEmployee(Employee employee) throws SQLException {
 
@@ -43,10 +47,10 @@ public class EmployeeDao {
     public int updateEmployee(Employee employee) throws SQLException {
 
         con = ConnectionUtil.getConnection();
-        ps = con.prepareStatement("UPDATE `contact` SET name = ?, number = ? WHERE id = ?");
-        ps.setString(1, employee.getFirstName());
-        ps.setString(2, employee.getLastName());
-        ps.setString(3, employee.getRole());
+        ps = con.prepareStatement("UPDATE `employee` SET last_name = ?, role = ? WHERE id = ?");
+        ps.setString(1, employee.getLastName());
+        //ps.setString(2, employee.getLastName());
+        ps.setString(2, employee.getRole());
         ps.setInt(3, employee.getId());
         ps.executeUpdate();
         int n = ps.executeUpdate();
@@ -68,7 +72,7 @@ public class EmployeeDao {
                 employee.setFirstName(resultSet.getString("first_name"));
                 String roleOrdinal = resultSet.getString("role");
                 employee.setRole(String.valueOf(Role.valueOf(roleOrdinal)));
-                int id = resultSet.getInt("departement_id");
+                int id = resultSet.getInt("department_id");
                 Department department;
                 if( departmentDao.getDepartmentById(id)!= null){
                     department = departmentDao.getDepartmentById(id);

@@ -25,6 +25,7 @@ public class DepartmentUI extends JFrame {
 
     public DepartmentUI() throws SQLException {
         this.departmentController = new DepartmentController();
+        this.departmentDao = new DepartmentDao();
         initializeUI();
     }
 

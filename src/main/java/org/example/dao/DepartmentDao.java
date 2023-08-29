@@ -16,7 +16,8 @@ public class DepartmentDao {
     private PreparedStatement ps;
 
     public DepartmentDao() {
-            con = ConnectionUtil.getConnection();
+
+        con = ConnectionUtil.getConnection();
     }
 
     public int addDepartment(Department department) throws SQLException {
@@ -25,7 +26,7 @@ public class DepartmentDao {
         ps = con.prepareStatement("INSERT INTO `department` (`name`) VALUES (?) ");
         ps.setString(1, department.getName());
         int n = ps.executeUpdate();
-        con.close();
+        //con.close();
         return n;
 
     }
@@ -36,7 +37,7 @@ public class DepartmentDao {
         ps = con.prepareStatement("DELETE FROM `department` WHERE id = ?");
         ps.setInt(1, id);
         ps.executeUpdate();
-        con.close();
+       // con.close();
     }
 
     public int updateDepartment(Department department) throws SQLException {
@@ -47,7 +48,7 @@ public class DepartmentDao {
         ps.setInt(2, department.getId());
         ps.executeUpdate();
         int n = ps.executeUpdate();
-        con.close();
+//        con.close();
         return n;
 
     }
